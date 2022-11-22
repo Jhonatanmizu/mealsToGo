@@ -1,6 +1,13 @@
 import React from "react";
 import { StyleSheet, Text } from "react-native";
 import { Card } from "react-native-paper";
+import {
+  RestaurantCard,
+  RestaurantCardContent,
+  RestaurantCardCover,
+  RestaurantTitle,
+} from "../../../layout/card";
+import { Title } from "../../../layout/typography";
 import { RestaurantData } from "../../../models/RestaurantData";
 
 interface Props {
@@ -19,25 +26,12 @@ export default function RestaurantInfo({ restaturantInfo = {} }: Props) {
     isClosed = false,
   } = restaturantInfo;
   return (
-    <Card style={styles.card}>
-      <Card.Title title="Pedido" subtitle="algo" />
-      <Card.Cover key={name} style={styles.cover} source={{ uri: photos[0] }} />
-      <Card.Content>
-        <Text style={styles.title}>{name}</Text>
-      </Card.Content>
-    </Card>
+    <RestaurantCard elevation={5}>
+      <RestaurantTitle title="Algo" subtitle="Somenthing" />
+      <RestaurantCardCover source={{ uri: photos[0] }} key={name} />
+      <RestaurantCardContent>
+        <Title>Man</Title>
+      </RestaurantCardContent>
+    </RestaurantCard>
   );
 }
-const styles = StyleSheet.create({
-  card: {
-    elevation: 5,
-    backgroundColor: "white",
-  },
-  cover: {
-    padding: 20,
-    backgroundColor: "white",
-  },
-  title: {
-    padding: 16,
-  },
-});
