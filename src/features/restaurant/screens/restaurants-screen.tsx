@@ -15,6 +15,9 @@ export default function RestaurantsScreen() {
       </SearchContainer>
       <ListContainer>
         <RestaurantInfo />
+        <RestaurantInfo />
+        <RestaurantInfo />
+        <RestaurantInfo />
       </ListContainer>
     </SafeView>
   );
