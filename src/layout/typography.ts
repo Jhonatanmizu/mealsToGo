@@ -10,7 +10,7 @@ export const Title = styled.Text<LayoutProps>`
 
 export const Subtitle = styled.Text<LayoutProps>`
   font-size: ${({ size, theme }) => size || theme.fontSizes.body};
-  color: ${({ theme }) => theme.colors.ui.primary};
+  color: ${({ theme, color }) => color || theme.colors.ui.primary};
   font-family: ${({ theme }) => theme.fonts.body};
 `;
 
