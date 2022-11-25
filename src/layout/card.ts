@@ -11,7 +11,7 @@ import styled from "styled-components/native";
 export const RestaurantCard = styled(Card)<LayoutProps & CardProps>`
   background-color: ${({ bgColor, theme }) =>
     bgColor || theme.colors.bg.primary};
-  margin: ${({ theme }) => theme.space[2]};
+  margin-bottom: ${({ theme }) => theme.space[3]};
 `;
 export const RestaurantTitle = styled(Card.Title)<LayoutProps & CardTitleProps>`
   background-color: ${({ bgColor, theme }) =>
