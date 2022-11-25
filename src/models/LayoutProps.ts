@@ -4,4 +4,5 @@ export interface LayoutProps {
   padding?: number;
   borderRadius?: number;
   bgColor?: string;
+  variant?: string;
 }
