@@ -6,7 +6,7 @@ import {
   SafeView,
   SearchContainer,
 } from "../../../layout/container";
-import { FlatList } from "react-native";
+import { FlatList, StyleSheet } from "react-native";
 import { RestaurantData } from "../../../models/RestaurantData";
 
 export default function RestaurantsScreen() {
@@ -16,13 +16,16 @@ export default function RestaurantsScreen() {
         <Search placeholder="Busque aqui" />
       </SearchContainer>
       <FlatList
-        data={[{ name: 1 }, { name: 2 }, { name: 3 }]}
+        data={[{ name: "1" }, { name: "2" }, { name: "3" }]}
         renderItem={() => <RestaurantInfo />}
         keyExtractor={({ name }: RestaurantData) => name}
-        contentContainerStyle={{
-          padding: 16,
-        }}
+        contentContainerStyle={styles.list}
       />
     </SafeView>
   );
 }
+const styles = StyleSheet.create({
+  list: {
+    padding: 16,
+  },
+});
