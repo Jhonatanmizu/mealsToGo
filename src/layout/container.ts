@@ -33,3 +33,17 @@ export const StarsContainer = styled.View<LayoutProps>`
   align-items: center;
   /* justify-content: space-between; */
 `;
+
+export const Section = styled.View`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+`;
+export const SectionEnd = styled.View`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+`;
