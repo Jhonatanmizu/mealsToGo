@@ -7,10 +7,18 @@ import {
   RestaurantCardCover,
   RestaurantTitle,
 } from "../../../layout/card";
-import { StarsContainer, Wrapper } from "../../../layout/container";
+import {
+  Section,
+  SectionEnd,
+  StarsContainer,
+  Wrapper,
+} from "../../../layout/container";
 import { Caption, Paragraph, Subtitle } from "../../../layout/typography";
 import { RestaurantData } from "../../../models/RestaurantData";
 import star from "../../../assets/star";
+import open from "../../../assets/open";
+import { theme } from "../../../infrastructure/theme";
+import Spacer from "../../../components/Spacer/Spacer";
 interface Props {
   restaturantInfo?: RestaurantData;
 }
@@ -24,7 +32,7 @@ export default function RestaurantInfo({ restaturantInfo = {} }: Props) {
     address = "Citybank",
     isOpenNow = true,
     rating = 5,
-    isClosed = false,
+    isClosed = true,
   } = restaturantInfo;
   const ratingArray = Array.from(new Array(Math.ceil(rating)));
 
@@ -36,19 +44,24 @@ export default function RestaurantInfo({ restaturantInfo = {} }: Props) {
         <RestaurantCardContent>
           <Wrapper>
             <Subtitle>{name}</Subtitle>
+            <Section>
+              <StarsContainer>
+                {ratingArray.map(() => {
+                  return <SvgXml height="20" width="20" xml={star} />;
+                })}
+              </StarsContainer>
+              <SectionEnd>
+                {isClosed && (
+                  <Spacer variant="rightMedium">
+                    <Subtitle color={theme.colors.ui.error}>
+                      CLOSED TEMPORARILY
+                    </Subtitle>
+                  </Spacer>
+                )}
+                {isOpenNow && <SvgXml height="20" width="20" xml={open} />}
+              </SectionEnd>
+            </Section>
             <Caption>{address}</Caption>
-            <StarsContainer>
-              {ratingArray.map(() => {
-                return <SvgXml height="20" width="20" xml={star} />;
-              })}
-            </StarsContainer>
-            <Paragraph>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse
-            </Paragraph>
           </Wrapper>
         </RestaurantCardContent>
       </RestaurantCard>
