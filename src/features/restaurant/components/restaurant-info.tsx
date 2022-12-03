@@ -1,5 +1,5 @@
 import React from "react";
-import Svg, { SvgXml } from "react-native-svg";
+import { SvgXml } from "react-native-svg";
 
 import {
   RestaurantCard,
@@ -13,7 +13,7 @@ import {
   StarsContainer,
   Wrapper,
 } from "../../../layout/container";
-import { Caption, Paragraph, Subtitle } from "../../../layout/typography";
+import { Caption, Subtitle } from "../../../layout/typography";
 import { RestaurantData } from "../../../models/RestaurantData";
 import star from "../../../assets/star";
 import open from "../../../assets/open";
@@ -24,22 +24,23 @@ interface Props {
 }
 export default function RestaurantInfo({ restaturantInfo = {} }: Props) {
   const {
-    name = "Some rest",
-    icon = "temp",
+    name,
+    icon,
     photos = [
       "https://images.unsplash.com/photo-1621605815971-fbc98d665033?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
     ],
-    address = "Citybank",
-    isOpenNow = true,
-    rating = 5,
-    isClosed = true,
+    address,
+    isOpenNow,
+    rating,
+    isClosed,
   } = restaturantInfo;
+
   const ratingArray = Array.from(new Array(Math.ceil(rating)));
 
   return (
     <>
       <RestaurantCard elevation={5}>
-        <RestaurantTitle title="Algo" subtitle="Somenthing" />
+        {/* <RestaurantTitle title="Algo" subtitle="Something" /> */}
         <RestaurantCardCover source={{ uri: photos[0] }} key={name} />
         <RestaurantCardContent>
           <Wrapper>
