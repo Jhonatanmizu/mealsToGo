@@ -1,4 +1,4 @@
-import { mocks } from "./mock";
+import { mockImages, mocks } from "./mock";
 import camelize from "camelize";
 
 export const getRestaurants = async (
@@ -10,14 +10,21 @@ export const getRestaurants = async (
     if (!mock) {
       reject("not found");
     }
-    resolve(mock);
+    setTimeout(() => {
+      resolve(mock);
+    }, 40);
   });
 };
-export const transformRestaurantsData = (restaurants: any[]) => {
+export const transformRestaurantsData = (restaurants: any) => {
+  console.log("RESTAURANTS ON TRANSFORM", restaurants);
+  // TODO check if results r have business_status
   const mappedResult = restaurants.results.map((r: any) => {
+    r.photos = r.photos.map(() => {
+      return mockImages[Math.ceil(Math.random() * mockImages.length - 1)];
+    });
     return {
       ...r,
-      isClosedTemporarily: r.bussiness_status === "CLOSED_TEMPORARILY",
+      isClosedTemporarily: r.business_status === "CLOSED_TEMPORARILY",
       isOpenNow: r.opening_hours && r.opening_hours.open_now,
     };
   });
