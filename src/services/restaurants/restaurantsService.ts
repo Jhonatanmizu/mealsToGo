@@ -12,7 +12,7 @@ export const getRestaurants = async (
     }
     setTimeout(() => {
       resolve(mock);
-    }, 40);
+    }, 20);
   });
 };
 export const transformRestaurantsData = (restaurants: any) => {
