@@ -6,6 +6,7 @@ import { theme } from "./src/infrastructure/theme/index";
 import { useFonts, Oswald_400Regular } from "@expo-google-fonts/oswald";
 import { Lato_400Regular, useFonts as useLato } from "@expo-google-fonts/lato";
 import AppNavigation from "./src/router/AppNavigation/AppNavigation";
+
 export default function App() {
   const [oswaldLoaded] = useFonts({
     Oswald_400Regular,
@@ -17,7 +18,6 @@ export default function App() {
     <>
       {oswaldLoaded && latoLoaded && (
         <ThemeProvider theme={theme}>
-          {/* <RestaurantsScreen /> */}
           <AppNavigation />
           <ExpoStatusBar style="auto" />
         </ThemeProvider>
