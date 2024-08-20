@@ -1,11 +1,7 @@
 import React from "react";
 import Search from "../../../components/Search";
 import RestaurantInfo from "../components/restaurant-info";
-import {
-  ListContainer,
-  SafeView,
-  SearchContainer,
-} from "../../../layout/container";
+import { SafeView, SearchContainer } from "../../../layout/container";
 import { FlatList, StyleSheet } from "react-native";
 import { RestaurantData } from "../../../models/RestaurantData";
 
@@ -18,7 +14,7 @@ export default function RestaurantsScreen() {
       <FlatList
         data={[{ name: "1" }, { name: "2" }, { name: "3" }]}
         renderItem={() => <RestaurantInfo />}
-        keyExtractor={({ name }: RestaurantData) => name}
+        keyExtractor={({ name }: RestaurantData, index) => `${name}-${index}`}
         contentContainerStyle={styles.list}
       />
     </SafeView>
