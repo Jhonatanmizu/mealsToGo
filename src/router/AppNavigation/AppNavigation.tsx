@@ -7,10 +7,12 @@ import { SafeView } from "../../layout/container";
 import { Title } from "react-native-paper";
 import Ionicons from "@expo/vector-icons/Ionicons";
 const Tab = createBottomTabNavigator();
-const TabIcon = {
-  Restaurants: "md-restarant",
-  Map: "md-map",
-  Setting: "md-setting",
+
+type IoniconName = keyof typeof Ionicons.glyphMap;
+const TabIcon: Record<string, IoniconName> = {
+  Restaurants: "restaurant",
+  Maps: "map",
+  Settings: "settings",
 };
 const Maps = () => (
   <SafeView>
@@ -22,32 +24,15 @@ const Settings = () => (
     <Title>Settings</Title>
   </SafeView>
 );
-// const tabBarIcon = (iconName: string, size: string, color: string) => {
-//   return <Ionicons name={iconName} size={size} color={color} />;
-// };
-// const screenOptions = ({ route }) => {
-//   const icon = TabIcon[route.name];
-//   return {
-//     tabBarIcon,
-//   };
-// };
+
 export default function AppNavigation() {
   return (
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
-            let iconName;
-
-            if (route.name === "Restaurants") {
-              iconName = "md-restaurant";
-            } else if (route.name === "Settings") {
-              iconName = "md-settings";
-            } else if (route.name === "Maps") {
-              iconName = "md-map";
-            }
-
-            // You can return any component that you like here!
+          tabBarIcon: ({ color, size }) => {
+            let iconName: IoniconName = "key";
+            iconName = TabIcon[route.name] || "key";
             return <Ionicons name={iconName} size={size} color={color} />;
           },
           tabBarActiveTintColor: "tomato",
